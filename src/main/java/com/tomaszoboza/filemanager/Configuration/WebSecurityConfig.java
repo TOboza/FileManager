@@ -29,10 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/public").permitAll()
-                .antMatchers("/admview").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/modview").access("hasRole('ROLE_MODERATOR')")
-                .antMatchers("/userview").access("hasRole('ROLE_USER')")
+                .antMatchers("/*").permitAll()
+//                .antMatchers("/public").permitAll()
+//                .antMatchers("/admview").access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("/modview").access("hasRole('ROLE_MODERATOR')")
+//                .antMatchers("/userview").access("hasRole('ROLE_USER')")
                 .and()
                 .formLogin()
                 .loginPage("/index")

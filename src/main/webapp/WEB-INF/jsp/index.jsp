@@ -4,9 +4,11 @@
     <title>WebFileManager - Login</title>
 </head>
 <body>
-<form action="/login" method="post">
-    <input name="Username" type="text" />
-    <input name="Password" type="password" />
+<form action="/admview" method="post">
+    USERNAME :
+    <input name="username" type="text" /> <br>
+    PASSWORD :
+    <input name="password" type="password" /> <br>
     <input type="submit" value="Login!" />
 
 </form>
