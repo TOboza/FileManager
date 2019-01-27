@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
 
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     private String acceptlogin(@RequestParam("username") String username,
                                @RequestParam("password") String password) {
 
-        return "redirect:mainpage";
+        return "redirect:admview";
     }
 
 
-    @RequestMapping("/login")
+    @RequestMapping("/")
     private String showLogin(){
-        return "login";
+        return "index";
     }
 
 

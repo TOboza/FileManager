@@ -2,10 +2,12 @@ package com.tomaszoboza.filemanager.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-public class MvcConfig {
+public class MvcConfig implements WebMvcConfigurer {
 
     @Bean
     public InternalResourceViewResolver viewResolver() {
@@ -15,4 +17,14 @@ public class MvcConfig {
         return resolver;
     }
 
+
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/index").setViewName("index");
+        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/public").setViewName("public");
+        registry.addViewController("/userview").setViewName("userview");
+        registry.addViewController("/admview").setViewName("admview");
+        registry.addViewController("/modview").setViewName("modview");
+        registry.addViewController("/somewhere").setViewName("somewhere");
+    }
 }

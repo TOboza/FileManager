@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import java.sql.Blob;
 import java.sql.Date;
@@ -14,6 +15,7 @@ import java.sql.Date;
 public class Document {
     @NotEmpty
     @GeneratedValue
+    @Id
     private Long id;
 
     @NotEmpty

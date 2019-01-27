@@ -1,9 +1,6 @@
 package com.tomaszoboza.filemanager;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -11,6 +8,7 @@ public class User {
 
     @NotEmpty
     @GeneratedValue
+    @Id
     private Long id;
     @NotEmpty
     private String username;

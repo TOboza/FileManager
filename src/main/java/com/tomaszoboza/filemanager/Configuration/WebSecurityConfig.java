@@ -30,9 +30,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/public").permitAll()
-                .antMatchers("/admpanel").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/modpanel").access("hasRole('ROLE_MODERATOR')")
-                .antMatchers("/userpanel").access("hasRole('ROLE_USER')")
+                .antMatchers("/admview").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/modview").access("hasRole('ROLE_MODERATOR')")
+                .antMatchers("/userview").access("hasRole('ROLE_USER')")
                 .and()
                 .formLogin()
                 .loginPage("/index")
