@@ -17,14 +17,25 @@ public class User {
     @NotEmpty
     @Enumerated(EnumType.STRING)
     private Role role;
+    @NotEmpty
+    private Integer enabled;
 
     public User() {
     }
 
-    public User(@NotEmpty String username, @NotEmpty String password, @NotEmpty Role role) {
+    public User(@NotEmpty String username, @NotEmpty String password, @NotEmpty Role role, @NotEmpty Integer enabled) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.enabled = enabled;
+    }
+
+    public Integer getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Integer enabled) {
+        this.enabled = enabled;
     }
 
     public Long getId() {
@@ -66,6 +77,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
+                ", enabled=" + enabled +
                 '}';
     }
 }

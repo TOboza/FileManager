@@ -2,7 +2,9 @@ package com.tomaszoboza.filemanager.Configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,30 +20,41 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService userDetailsService;
 
-    @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+//    @Autowired
+//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .userDetailsService(userDetailsService)
+//                .passwordEncoder(passwordEncoder());
+//    }
+
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/*").permitAll()
-//                .antMatchers("/public").permitAll()
-//                .antMatchers("/admview").access("hasRole('ROLE_ADMIN')")
-//                .antMatchers("/modview").access("hasRole('ROLE_MODERATOR')")
-//                .antMatchers("/userview").access("hasRole('ROLE_USER')")
+                .antMatchers("/public").permitAll()
+                .antMatchers("/admview").access("hasRole('ADMIN')")
+                .antMatchers("/modview").access("hasRole('MODERATOR')")
+                .antMatchers("/userview").access("hasRole('USER')")
                 .and()
                 .formLogin()
-                .loginPage("/index")
+                .loginPage("/")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/public");
+    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authProvider());
     }
 
     @Bean(name = "passwordEncoder")

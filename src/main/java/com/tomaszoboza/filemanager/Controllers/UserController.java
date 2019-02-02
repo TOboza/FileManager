@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/admview", method = RequestMethod.POST)
     private String acceptlogin(@RequestParam("username") String username,
                                @RequestParam("password") String password) {
 
@@ -22,6 +23,7 @@ public class UserController {
     private String showLogin() {
         return "index";
     }
+
     @RequestMapping("/index")
     private String showindex() {
         return "index";
@@ -51,4 +53,7 @@ public class UserController {
     private String showsomwhere() {
         return "somewhere";
     }
+
+
+
 }

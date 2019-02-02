@@ -22,7 +22,6 @@ public class Document {
     @Column(nullable = false, updatable = false)
     @CreationTimestamp
     private Date creationTime;
-
     private String description;
     private String revision;
     private Blob file;
