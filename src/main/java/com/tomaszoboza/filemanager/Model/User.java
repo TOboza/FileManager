@@ -1,12 +1,13 @@
-package com.tomaszoboza.filemanager;
+package com.tomaszoboza.filemanager.Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
 
-    @NotEmpty
+
     @GeneratedValue
     @Id
     private Long id;
@@ -14,16 +15,16 @@ public class User {
     private String username;
     @NotEmpty
     private String password;
-    @NotEmpty
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Role role;
-    @NotEmpty
+    @NotNull
     private Integer enabled;
 
     public User() {
     }
 
-    public User(@NotEmpty String username, @NotEmpty String password, @NotEmpty Role role, @NotEmpty Integer enabled) {
+    public User(@NotEmpty String username, @NotEmpty String password, @NotNull Role role, @NotNull Integer enabled) {
         this.username = username;
         this.password = password;
         this.role = role;

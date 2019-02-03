@@ -1,5 +1,7 @@
 package com.tomaszoboza.filemanager.Controllers;
 
+import com.tomaszoboza.filemanager.Model.UserRepositiory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 
+    @Autowired
+    UserRepositiory userRepositiory;
 
 
     @RequestMapping(value = "/admview", method = RequestMethod.POST)
@@ -53,7 +57,6 @@ public class UserController {
     private String showsomwhere() {
         return "somewhere";
     }
-
 
 
 }

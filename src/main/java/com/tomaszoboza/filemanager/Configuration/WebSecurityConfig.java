@@ -20,15 +20,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService userDetailsService;
 
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .userDetailsService(userDetailsService)
-//                .passwordEncoder(passwordEncoder());
-//    }
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
+    }
 
     @Bean
-    public DaoAuthenticationProvider authProvider() {
+        public DaoAuthenticationProvider authProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
@@ -39,19 +39,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/public").permitAll()
-                .antMatchers("/admview").access("hasRole('ADMIN')")
-                .antMatchers("/modview").access("hasRole('MODERATOR')")
-                .antMatchers("/userview").access("hasRole('USER')")
+/*optional*/    .antMatchers("/**").permitAll()
+//                .antMatchers("/public/**", "/somewhere").permitAll()
+//                .antMatchers("/admview/**").access("hasRole('ADMIN')")
+//                .antMatchers("/modview/**").access("hasRole('MODERATOR')")
+//                .antMatchers("/userview/**").access("hasRole('USER')")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/")
+                .loginPage("/index")
+                .permitAll()
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/public");
     }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
