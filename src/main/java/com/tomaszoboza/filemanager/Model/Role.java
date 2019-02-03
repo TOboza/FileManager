@@ -1,6 +1,6 @@
 package com.tomaszoboza.filemanager.Model;
 
     public enum Role {
-        ADMIN , USER, MODERATOR;
+        ROLE_ADMIN , ROLE_USER, ROLE_MODERATOR;
     }
 

@@ -18,6 +18,10 @@
 
 </form>
 
+<br><br>
+<a href="register"> <p style="text-align: center; font-family: cursive" > Nie masz konta ? Zarejestruj się !</a></p>
+
+
 
 </body>
 </html>

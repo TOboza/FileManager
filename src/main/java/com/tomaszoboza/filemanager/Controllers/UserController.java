@@ -1,6 +1,7 @@
 package com.tomaszoboza.filemanager.Controllers;
 
-import com.tomaszoboza.filemanager.Model.UserRepositiory;
+import com.tomaszoboza.filemanager.Model.User;
+import com.tomaszoboza.filemanager.Model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -8,12 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 public class UserController {
 
     @Autowired
-    UserRepositiory userRepositiory;
+    UserRepository userRepository;
 
 
     @RequestMapping(value = "/admview", method = RequestMethod.POST)
@@ -58,5 +62,32 @@ public class UserController {
         return "somewhere";
     }
 
+    @RequestMapping("/register")
+    private String showregister() {
+        return "register";
+    }
 
+    @RequestMapping(value = "/index", method = RequestMethod.POST)
+    private String acceptregister(@RequestParam("username") String username,
+                                  @RequestParam("email") String email,
+                                  @RequestParam("password") String password,
+                                  @RequestParam("passwordR") String passwordR) {
+//        if (username.isEmpty()) {
+//            return "redirect:register/{msg_username_empty}";
+//        }else
+//            if (email.isEmpty()){
+//                return"redirect:register/{msg_email_empty}";
+//            }else
+
+
+        return "redirect:index";
+    }
+
+//    @RequestMapping(value = "/adminview/userlist", method = RequestMethod.GET)
+//    private String showUseerList() {
+//
+//        List<User> lista = new ArrayList<User>();
+//        lista = userRepository.findAll();
+//
+//    }
 }

@@ -8,15 +8,15 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.print.Doc;
 import java.util.Date;
 
 @SpringBootApplication
 public class FilemanagerApplication implements ApplicationRunner {
 
     @Autowired
-    UserRepositiory userRepositiory;
+    UserRepository userRepository;
 
     @Autowired
     UserDetailsService userDetailsService;
@@ -33,28 +33,29 @@ public class FilemanagerApplication implements ApplicationRunner {
 
     }
 
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        User user = new User();
-        user.setEnabled(1);
-        user.setId(1L);
-        user.setPassword("haslo");
-        user.setRole(Role.ADMIN);
-        user.setUsername("tom");
-
-        userRepositiory.save(user);
-
-        User user2 = userRepositiory.findAll().get(0);
-        System.out.println(user2);
-
-        byte[] fileToInsert = fileToBlob.convertFileToBlob("E://docforbase.txt");
-        Document doc1 = new
-                Document("Document 1", new Date(),"Opis dokumentu 1","1.0.0",fileToInsert);
-
-        docrepository.save(doc1);
-        Document docgrabbed = docrepository.getByDocName("Document 1");
-        System.out.println(docgrabbed);
+//        User user = new User();
+//        user.setEnabled(1);
+//        user.setId(1L);
+//        user.setPassword(new BCryptPasswordEncoder().encode("haslo"));
+//        user.setRole(Role.ROLE_ADMIN);
+//        user.setUsername("tom");
+//        user.setEmail("tom@xxx.xx");
+//
+//        userRepository.save(user);
+//
+//        User user2 = userRepository.findAll().get(0);
+//        System.out.println(user2);
+//
+//        byte[] fileToInsert = fileToBlob.convertFileToBlob("E://docforbase.txt");
+//        Document doc1 = new
+//                Document("Document 1", new Date(),"Opis dokumentu 1","1.0.0",fileToInsert);
+//
+//        docrepository.save(doc1);
+//        Document docgrabbed = docrepository.getByDocName("Document 1");
+//        System.out.println(docgrabbed);
     }
 }
 
-//  $2a$10$HghGDyzTtg5A3GhpyzRxa.NuOY2lpfa.9jYkg6VAJkCNpVlXN1myq
