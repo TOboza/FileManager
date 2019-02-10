@@ -4,13 +4,9 @@ import com.tomaszoboza.filemanager.Model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Arrays;
-
 
 @Controller
 public class UserController {
@@ -21,59 +17,58 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-//    @RequestMapping(value = "/admview", method = RequestMethod.POST)
-//    private String acceptlogin(@RequestParam("username") String username,
-//                               @RequestParam("password") String password) {
-//
-//        return "redirect:admview";
-//    }
-
     @RequestMapping("/")
     private String showLogin() {
         return "index";
     }
 
     @RequestMapping("/index")
-    private String showindex() {
+    private String showindex(Authentication authentication) {
+        System.out.println(authentication.getAuthorities().toString());
         return "index";
     }
 
-    @RequestMapping(value = "/view")
+    @RequestMapping(value = "/view", method = RequestMethod.POST)
     private String acceptLogin(@RequestParam("username") String username,
-                               @RequestParam("password") String password) {
+                               @RequestParam("password") String password,
+                               Authentication authentication) {
+        System.out.println(username + " " + password);
+
+
 
        return "redirect:view";
     }
 
+    @RequestMapping("/view")
+    private String showview(Authentication authentication) {
+
+
+         return ash.determineTargetUrl(authentication);
+    }
 
     @RequestMapping("/admview")
-    private String showadmview(Authentication authentication) {
+    private String showadmview() {
         return "admview";
     }
 
     @RequestMapping("/modview")
-    private String showmodview(Authentication authentication) {
+    private String showmodview() {
         return "modview";
     }
 
     @RequestMapping("/userview")
-    private String showuserview(Authentication authentication) {
+    private String showuserview() {
         return "userview";
     }
 
     @RequestMapping("/public")
-    private String showpublic(Authentication authentication) {
-        System.out.println(authentication.getDetails());
-        authentication.getAuthorities().forEach(e -> System.out.println(e.toString()));
+    private String showpublic() {
+
         return "public";
     }
 
     @RequestMapping("/somewhere")
     private String showsomwhere(Authentication authentication) {
-
-        System.out.println(authentication.getDetails());
-        System.out.println(authentication.getAuthorities().toString());
-
         return "somewhere";
     }
 

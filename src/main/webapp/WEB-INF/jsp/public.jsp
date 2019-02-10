@@ -5,7 +5,7 @@
 </head>
 <body>
 PUBLIC ACCESS
-
+<a href="index.jsp"> Zaloguj sie ponownie. </a>
 
 </form>
 

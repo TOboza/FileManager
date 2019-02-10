@@ -17,7 +17,7 @@ public class User {
     private String password;
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Authorities authorities;
     @NotNull
     private Integer enabled;
 
@@ -28,10 +28,10 @@ public class User {
     }
 
 
-    public User(@NotEmpty String username, @NotEmpty String password, @NotNull Role role, @NotEmpty String email, @NotNull Integer enabled) {
+    public User(@NotEmpty String username, @NotEmpty String password, @NotNull Authorities authorities, @NotEmpty String email, @NotNull Integer enabled) {
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.authorities = authorities;
         this.enabled = enabled;
         this.email = email;
     }
@@ -68,12 +68,12 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public Authorities getAuthorities() {
+        return authorities;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setAuthorities(Authorities authorities) {
+        this.authorities = authorities;
     }
     public String getEmail() {
         return email;
@@ -89,7 +89,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
+                ", authorities=" + authorities +
                 ", enabled=" + enabled +
                 ", email='" + email + '\'' +
                 '}';
