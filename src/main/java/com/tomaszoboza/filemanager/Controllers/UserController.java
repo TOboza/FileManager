@@ -24,8 +24,7 @@ public class UserController {
 
     @RequestMapping("/index")
     private String showindex(Authentication authentication) {
-        System.out.println(authentication.getAuthorities().toString());
-        return "index";
+         return "index";
     }
 
     @RequestMapping(value = "/view", method = RequestMethod.POST)
@@ -33,17 +32,12 @@ public class UserController {
                                @RequestParam("password") String password,
                                Authentication authentication) {
         System.out.println(username + " " + password);
-
-
-
-       return "redirect:view";
+        return "redirect:view";
     }
 
     @RequestMapping("/view")
     private String showview(Authentication authentication) {
-
-
-         return ash.determineTargetUrl(authentication);
+        return ash.determineTargetUrl(authentication);
     }
 
     @RequestMapping("/admview")
@@ -63,7 +57,6 @@ public class UserController {
 
     @RequestMapping("/public")
     private String showpublic() {
-
         return "public";
     }
 
@@ -71,7 +64,6 @@ public class UserController {
     private String showsomwhere(Authentication authentication) {
         return "somewhere";
     }
-
 
 
     @RequestMapping("/register")
