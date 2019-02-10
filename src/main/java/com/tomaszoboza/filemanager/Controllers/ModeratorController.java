@@ -5,19 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/userview")
-public class UserController {
 
+@Controller
+@RequestMapping("/modview")
+public class ModeratorController {
 
     @Autowired
     UserRepository userRepository;
 
-
     @RequestMapping("/")
-    private String showuserview() {
-        return "userview";
+    private String showmodview() {
+        return "modview";
     }
-
-
 }

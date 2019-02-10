@@ -17,18 +17,16 @@
 <body>
 <p style="font-size: large">ADMIN VIEW</p>
 
-<p>Manage accounts </p>
+<a href="/admview/manage_accounts"> Manage accounts </a>
 <p>Upload documents</p>
-<p>Logout</p>
+<a href="/logout" > LOGOUT</a>
 <%
 
 
 
 %>
 
-<c:forEach var = "osoby" items="s">
-Item <c:out value = "${osoby}"/><p>
-    </c:forEach>
+
 
 </body>
 </html>

@@ -44,13 +44,13 @@ public class FilemanagerApplication implements ApplicationRunner {
 
 //        User user = new User();
 //        user.setEnabled(1);
-//        user.setId(1L);
+//        user.setId(3L);
 //        user.setPassword(new BCryptPasswordEncoder().encode("haslo"));
-//        user.setAuthorities(Authorities.ADMIN);
-//        user.setUsername("tom");
-//        user.setEmail("tom@xxx.xx");
+//        user.setAuthorities(Authorities.USER);
+//        user.setUsername("tim");
+//        user.setEmail("tim@xxx.xx");
 //        userRepository.save(user);
-//
+
 //        User user2 = new User();
 //        user.setEnabled(1);
 //        user.setId(2L);
