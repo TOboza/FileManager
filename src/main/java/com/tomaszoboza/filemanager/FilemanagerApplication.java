@@ -1,6 +1,7 @@
 package com.tomaszoboza.filemanager;
 
 
+import com.tomaszoboza.filemanager.Configuration.WebSecurityConfig;
 import com.tomaszoboza.filemanager.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -27,6 +28,8 @@ public class FilemanagerApplication implements ApplicationRunner {
     @Autowired
     DocumentRepository docrepository;
 
+    @Autowired
+    WebSecurityConfig wbc;
 
     public static void main(String[] args) {
         SpringApplication.run(FilemanagerApplication.class, args);
@@ -36,6 +39,9 @@ public class FilemanagerApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+       // System.out.println(wbc.passwordEncoder().encode("haslo"));
+
 //        User user = new User();
 //        user.setEnabled(1);
 //        user.setId(1L);

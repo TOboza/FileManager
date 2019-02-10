@@ -18,12 +18,4 @@ public class DbConfig {
         return ds;
     }
 
-    @Bean(name = "userDetailsService")
-    public UserDetailsService userDetailsService() {
-        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
-        jdbcImpl.setDataSource(dataSource());
-        jdbcImpl.setUsersByUsernameQuery("SELECT username, password, enabled FROM user WHERE username = ?");
-        jdbcImpl.setAuthoritiesByUsernameQuery("SELECT username, role FROM user WHERE username = ?");
-        return jdbcImpl;
-    }
 }

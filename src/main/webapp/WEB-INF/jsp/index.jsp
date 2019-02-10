@@ -9,11 +9,11 @@
 
 <header><h1 style="text-align:center">WebFileManager</h1></header>
 
-<form action="/admview" method="post" style="text-align:center">
+<form action="login" method="post" style="text-align:center">
     <p> USERNAME :</p>
-    <input name="username" type="text" id="username" /> <br>
+    <input name="username" type="text" /> <br>
    <P> PASSWORD : </P>
-    <input name="password" type="password" id="password" /> <br><br>
+    <input name="password" type="password"/> <br><br>
     <input type="submit" value="Login!" />
 
 </form>
