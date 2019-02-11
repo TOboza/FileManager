@@ -18,19 +18,19 @@ public class RegisterValidator {
     }
 
     public String getEmailMsg() {
-        if (emailMsg!=null) {
+        if (emailMsg != null) {
             return emailMsg;
-        }else return "EmailMsg has no content";
+        } else return "EmailMsg has no content";
     }
 
     public String getUsernameMsg() {
-        if(usernameMsg != null) {
+        if (usernameMsg != null) {
             return usernameMsg;
         } else return "UsernameMsg has no content";
     }
 
     public String getPasswordMsg() {
-        if(passwordMsg!=null) {
+        if (passwordMsg != null) {
             return passwordMsg;
         } else return "PasswordMsg has no content";
     }
@@ -40,10 +40,10 @@ public class RegisterValidator {
             if (email.contains("@") && email.length() > 5 && email.contains(".")) {
                 emailMsg = "Email address is valid";
                 return true;
+            } else {
+                emailMsg = "Email address is invalid";
+                return false;
             }
-        } else {
-            emailMsg = "Email address is invalid";
-            return false;
         }
         return false;
 
@@ -51,19 +51,22 @@ public class RegisterValidator {
 
     public boolean checkUsername(String userToCheck) {
         if (userToCheck != null) {
-            if (userToCheck.equals(userRepository.findByUsername(userToCheck).getUsername())){
+            if (userRepository.existsUserByUsername(userToCheck)) {
                 usernameMsg = "Username already exist";
                 return false;
+            } else {
+                usernameMsg = "Username unique";
+                return true;
             }
         }
-        usernameMsg = "Username unique";
-        return true;
+        usernameMsg = "Username empty";
+        return false;
     }
 
-    public boolean passwordCheck(String password, String passwordR){
-        if (password != null){
-            if(password.length()>3 ){
-                if (password.equals(passwordR)){
+    public boolean passwordCheck(String password, String passwordR) {
+        if (password != null) {
+            if (password.length() > 3) {
+                if (password.equals(passwordR)) {
                     passwordMsg = "Password valid";
                     return true;
                 }

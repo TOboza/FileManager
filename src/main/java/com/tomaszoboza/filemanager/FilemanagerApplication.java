@@ -31,6 +31,9 @@ public class FilemanagerApplication implements ApplicationRunner {
     @Autowired
     WebSecurityConfig wbc;
 
+    @Autowired
+    RegisterValidator rv;
+
     public static void main(String[] args) {
         SpringApplication.run(FilemanagerApplication.class, args);
 
@@ -39,6 +42,7 @@ public class FilemanagerApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
 
        // System.out.println(wbc.passwordEncoder().encode("haslo"));
 
@@ -70,7 +74,13 @@ public class FilemanagerApplication implements ApplicationRunner {
 //        docrepository.save(doc1);
 //        Document docgrabbed = docrepository.getByDocName("Document 1");
 //        System.out.println(docgrabbed);
-
+        System.out.println("sprawdzenie walidatora\n\n");
+        System.out.println(rv.checkEmail("tom@costam.pl"));
+        System.out.println(rv.getEmailMsg());
+        System.out.println(rv.passwordCheck("tomas","toma"));
+        System.out.println(rv.getPasswordMsg());
+        System.out.println(rv.checkUsername("ted1"));
+        System.out.println(rv.getUsernameMsg());
     }
 }
 

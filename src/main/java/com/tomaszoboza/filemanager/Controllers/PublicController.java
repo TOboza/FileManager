@@ -1,5 +1,6 @@
 package com.tomaszoboza.filemanager.Controllers;
 
+import com.tomaszoboza.filemanager.Model.RegisterValidator;
 import com.tomaszoboza.filemanager.Model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,9 @@ public class PublicController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RegisterValidator rV;
 
     @RequestMapping("/")
     private String showLogin() {
@@ -56,42 +60,14 @@ public class PublicController {
         return "register";
     }
 
-
-//    @RequestMapping(value = "/index", method = RequestMethod.POST)
-//    private String acceptregister(@RequestParam("username") String username,
-//                                  @RequestParam("email") String email,
-//                                  @RequestParam("password") String password,
-//                                  @RequestParam("passwordR") String passwordR) {
-//        if (username.isEmpty()) {
-//            return "redirect:register/{msg_username_empty}";
-//        }else
-//            if (email.isEmpty()){
-//                return"redirect:register/{msg_email_empty}";
-//            }else
-//
-//
-//        return "redirect:index";
-//    }
-
-//    @RequestMapping(value = "/adminview/userlist", method = RequestMethod.GET)
-//    private String showUseerList() {
-//
-//        List<User> lista = new ArrayList<User>();
-//        lista = userRepository.findAll();
-//        Model model =  model().addAttribute(lista);
-//    }
 @RequestMapping(value = "/register", method = RequestMethod.POST)
 private String acceptregister(@RequestParam("username") String username,
                               @RequestParam("password") String password,
                               @RequestParam("passwordR") String passwordR,
                               @RequestParam("email") String email,
                               Authentication authentication) {
-    if (username.isEmpty()) {
-            return "redirect:register/{msg_username_empty}";
-        }else
-            if (email.isEmpty()){
-                return"redirect:register/{msg_email_empty}";
-            }else
+
+
 
     return "redirect:view";
 }
