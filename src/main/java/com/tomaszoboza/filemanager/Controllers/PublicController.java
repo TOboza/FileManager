@@ -31,7 +31,7 @@ public class PublicController {
     @RequestMapping(value = "/view", method = RequestMethod.POST)
     private String acceptLogin(@RequestParam("username") String username,
                                @RequestParam("password") String password,
-                               Authentication authentication) {
+                                Authentication authentication) {
         return "redirect:view";
     }
 
@@ -80,4 +80,19 @@ public class PublicController {
 //        lista = userRepository.findAll();
 //        Model model =  model().addAttribute(lista);
 //    }
+@RequestMapping(value = "/register", method = RequestMethod.POST)
+private String acceptregister(@RequestParam("username") String username,
+                              @RequestParam("password") String password,
+                              @RequestParam("passwordR") String passwordR,
+                              @RequestParam("email") String email,
+                              Authentication authentication) {
+    if (username.isEmpty()) {
+            return "redirect:register/{msg_username_empty}";
+        }else
+            if (email.isEmpty()){
+                return"redirect:register/{msg_email_empty}";
+            }else
+
+    return "redirect:view";
+}
 }

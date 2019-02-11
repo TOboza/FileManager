@@ -26,9 +26,10 @@ public class Document {
     private Date creationTime;
     private String description;
     private String revision;
-
+    private String filename;
     @Column(name = "file", columnDefinition = "BLOB", nullable = false)
     private byte[] file;
+    private String uploader;
 
     public Document() {
     }
@@ -46,7 +47,25 @@ public class Document {
         this.creationTime = creationTime;
         this.description = description;
         this.revision = revision;
+        this.filename = filename;
         this.file = file;
+        this.uploader = uploader;
+    }
+
+    public String getUploader() {
+        return uploader;
+    }
+
+    public void setUploader(String uploader) {
+        this.uploader = uploader;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     public Long getId() {
@@ -97,6 +116,8 @@ public class Document {
                 ", creationTime=" + creationTime +
                 ", description='" + description + '\'' +
                 ", revision='" + revision + '\'' +
+                ", filename='" + filename + '\'' +
+                ", uploader='" + uploader + '\'' +
                 '}';
     }
 }

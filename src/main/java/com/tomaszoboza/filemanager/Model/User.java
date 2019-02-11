@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class User {
 
-
     @GeneratedValue
     @Id
     private Long id;
@@ -26,7 +25,6 @@ public class User {
 
     public User() {
     }
-
 
     public User(@NotEmpty String username, @NotEmpty String password, @NotNull Authorities authorities, @NotEmpty String email, @NotNull Integer enabled) {
         this.username = username;
@@ -75,6 +73,7 @@ public class User {
     public void setAuthorities(Authorities authorities) {
         this.authorities = authorities;
     }
+
     public String getEmail() {
         return email;
     }
